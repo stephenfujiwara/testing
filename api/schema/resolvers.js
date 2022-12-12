@@ -6,9 +6,8 @@ import mongoose from "mongoose";
 export const resolvers = {
   Query: {
     books: async (parent, args) => {
-      const connection = mongoose.createConnection(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-      });
+      const connection = mongoose.createConnection(process.env.MONGO_URI);
+      console.log(process.env.MONGO_URI);
       const Book = bookModel(connection);
       const books = await Book.find({});
       connection.close();
